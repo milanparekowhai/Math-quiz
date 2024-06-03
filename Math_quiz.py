@@ -1,7 +1,7 @@
 import random
 import math
 
-
+#
 def round_num(num):
     while True:
 
@@ -10,8 +10,7 @@ def round_num(num):
 
         else:
             return math.floor(num)
-
-
+# checks for yes/no inputs
 def yes_no(question):
     while True:
         response = input(question).lower()
@@ -46,7 +45,7 @@ def string_checker(user_response, valid_ans):
 
         return "invalid"
 
-
+# check if the int should be used
 def int_check(int_question, low, high):
     while True:
 
@@ -74,7 +73,7 @@ def int_check(int_question, low, high):
 
             print(error)
 
-
+# appends the answer for player history
 def int_check_answer(int_question, low, high):
     while True:
 
@@ -102,10 +101,12 @@ def int_check_answer(int_question, low, high):
 
             print(error)
 
-
+# makes the question
 def equation(num1, num2, ops):
     return f"{num1} {ops} {num2}"
 
+
+# round counter
 
 round_number = 0
 max_rounds = 0
@@ -116,7 +117,7 @@ inccorect_point_number = 0
 history_player = []
 history_answer = []
 
-# todo introduce the quiz (no game)
+#  instructions
 want_instructions = yes_no("would you like to see the instructions enter yes or no ")
 
 if want_instructions == "yes":
@@ -129,12 +130,16 @@ if want_instructions == "yes":
 This quiz will foucs on basic math questions 
 some might be hard but try you best 
 
+ (+) means you need to add the numbers together
+ (-) means you need to minus the number together
+ (*) means you need to times the numbers together
+ (/) means you need to divide the numbers together
+ 
 You stats will be shown at the end 
 
-🫡🫡🫡G00D LUCK😊😫😫😫
+🫡🫡🫡G00D LUCK 
 
           ''')
-
 
 max_rounds = int_check("how many Question would you like ?", 1, 10)
 start = input("Press <enter> to begin")
@@ -166,6 +171,7 @@ while not valid:
     else:
         float_answer = num1 / num2
         answer = round_num(float_answer)
+    history_answer.append(answer)
 
     if int_check_answer("", -1000, 10000) == answer:
         print("correct!")
@@ -174,19 +180,23 @@ while not valid:
         print("incorrect")
         inccorect_point_number += 1
 
-# todo append current question history to list
+# history list
 
     if round_number >= max_rounds:
-        print("You have done the test here are your stats\n"
-              f"{points_number} Correct!\n\n"
-              f"{inccorect_point_number} incorrect")
-        history_see = input("Would you like to see your answers?")
-        if history_see == "yes":
-            print(f'''the correct answers were {history_answer}
-your answers were        {history_player}''')
+
+        if yes_no("You have done this quiz!👍"
+              "would you like to see your anwsers and stats? (Yes or no)") == "yes":
+            print(f"The correct anwsers were {history_answer}\n"
+                  f"Your anwers were {history_player}\n"
+                  f"{points_number} correct\n"
+                  f"{inccorect_point_number} inccorect")
+
         else:
-            pass
-        # todo ask if the user wants history, for loop print history
+            print("Thank you for taking this quiz 😊")
+
+
+
+
         valid = True
 
 
