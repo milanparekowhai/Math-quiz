@@ -112,8 +112,9 @@ round_number = 0
 max_rounds = 0
 # todo define history list
 points_number = 0
-inccorect_point_number = 0
+incorrect_point_number = 0
 
+#shows histroy of player
 history_player = []
 history_answer = []
 
@@ -140,15 +141,16 @@ You stats will be shown at the end
 🫡🫡🫡G00D LUCK 
 
           ''')
+#round into
 
 max_rounds = int_check("how many Question would you like ?", 1, 10)
 start = input("Press <enter> to begin")
-
+# loop
 valid = False
 while not valid:
 
     round_number += 1
-
+# makes the question and tracks points and stats
     print()
     print(f"💠💠💠 Question {str(round_number)} 💠💠💠")
 
@@ -177,8 +179,9 @@ while not valid:
         print("correct!")
         points_number += 1
     else:
+
         print("incorrect")
-        inccorect_point_number += 1
+        incorrect_point_number += 1
 
 # history list
 
@@ -189,7 +192,7 @@ while not valid:
             print(f"The correct anwsers were {history_answer}\n"
                   f"Your anwers were {history_player}\n"
                   f"{points_number} correct\n"
-                  f"{inccorect_point_number} inccorect")
+                  f"{incorrect_point_number} inccorect")
 
         else:
             print("Thank you for taking this quiz 😊")
@@ -198,6 +201,8 @@ while not valid:
 
 
         valid = True
+
+
 
 
 
